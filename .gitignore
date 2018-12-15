@@ -30,3 +30,14 @@
 *.exe
 *.out
 *.app
+
+.vscode/
+include/display/
+include/okapi/
+include/pros/
+bin/
+firmware/
+Makefile
+project.pros
+common.mk
+compile_commands.json
