@@ -21,6 +21,7 @@ extern Motor LEFT_BASE_1;
 extern Motor LEFT_BASE_2;
 extern Motor RIGHT_BASE_1;
 extern Motor RIGHT_BASE_2;
+extern ADIDigitalIn CATAPULT_LIMIT;
 
 std::int32_t canalog(controller_analog_e_t);
 std::int32_t cdigital(controller_digital_e_t);
@@ -32,6 +33,9 @@ void auton_reverse();
 void descorer(std::int8_t);
 void intake(std::int8_t);
 void catapult(std::int8_t);
+void catapult_dist(double);
+std::int32_t rev_auton();
+std::int32_t get_auton();
 std::int32_t get_arm_lim_switch();
 
 #ifdef __cplusplus

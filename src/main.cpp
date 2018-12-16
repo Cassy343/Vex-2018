@@ -23,11 +23,11 @@ void auton1(bool blue) {
     delay(1000);
     drive_dist(3400, 3400);
   }else{
-    drive_dist(0, 300, 75);
+    drive_dist(0, 350, 75);
     delay(2000);
     drive_dist(2000, 2000);
     delay(2000);
-    drive_dist(-4900, -4900);
+    drive_dist(-5100, -5100);
     delay(5000);
     drive_dist(650, -650);
     delay(1000);
@@ -69,11 +69,178 @@ void auton2(bool blue) {
   delay(1400);
 }
 
+void auton3(bool blue) {
+  while(!get_arm_lim_switch()) {
+    catapult(127);
+  }
+  delay(250);
+  catapult(0);
+
+  drive_dist(2600, 2600);
+  intake(127);
+  delay(2000);
+
+  if(blue) {
+    drive_dist(-2600, -2600);
+    delay(2000);
+    intake(0);
+    drive_dist(700, -700);
+    delay(1000);
+    catapult(127);
+    delay(500);
+    catapult(0);
+    drive_dist(3200,3200);
+    delay(2500);
+    drive_dist(-4900,-4900);
+    delay(3500);
+    drive_dist(-650, 650);
+    delay(800);
+    drive_dist(3400, 3400);
+  }else{
+    drive_dist(-2300, -2300);
+    delay(2000);
+    intake(0);
+    drive_dist(-600, 600);
+    delay(1500);
+    catapult(127);
+    delay(500);
+    catapult(0);
+    drive_dist(450,750);
+    delay(600);
+    drive_dist(500,500);
+    delay(500);
+    drive_dist(750,450);
+    delay(600);
+    drive_dist(1500,1500);
+    delay(1000);
+    drive_dist(-4900,-4900);
+    delay(3500);
+    drive_dist(650, -650);
+    delay(800);
+    drive_dist(3400, 3400);
+  }
+}
+
+void auton4(bool blue){
+  while(!get_arm_lim_switch()) {
+    catapult(127);
+  }
+  catapult(0);
+  delay(8000);
+  catapult(127);
+  delay(500);
+  catapult(0);
+  if(blue)
+  {
+    drive_dist(-300,300);
+    delay(1000);
+    drive_dist(2000,2000);
+    delay(2000);
+    drive_dist(600,-600);
+    delay(1000);
+    drive_dist(2700,2700);
+  }
+  else
+  {
+    drive_dist(300,-300);
+    delay(1000);
+    drive_dist(2000,2000);
+    delay(2000);
+    drive_dist(-600,600);
+    delay(1000);
+    drive_dist(2700,2700);
+  }
+}
+
+void auton5(bool blue)
+{
+  drive_dist(-1300,-1300);
+  delay(3500);
+  if(blue){
+  drive_dist(-650, 650);
+  }
+  else{
+    drive_dist(650,-650);
+  }
+  delay(800);
+  drive_dist(3400, 3400);
+}
+
+
+void auton_skills(){
+  auton3(false);
+  drive_dist(1600, 1600);
+}
+
 void autonomous() {
   bool blue = true;
 
-  auton1(blue);
-  //auton2(blue);
+  //auton1(false);
+  //auton3(blue);
+  //auton4(blue);
+  //auton_skills();
+  auton5(false);
+  /*if(get_auton() == 1) {
+    return;
+  }
+
+  std::int32_t ra = rev_auton();
+  if(ra) {
+    auton_reverse();
+  }
+
+  if(get_auton() == 3) {
+  drive_dist(5000, 5000);
+  intake(127);
+  delay(5000);
+  intake(0);
+  return;
+}*/
+/*
+  drive_dist(1000, 1000);
+  catapult(127);
+  delay(2000);
+
+  catapult(0);
+  drive_dist(300, 0, 75);
+  delay(2000);
+
+  drive_dist(2000, 2000);
+  delay(2000);
+
+  drive_dist(2000, 2000);
+  catapult_dist(1200);
+  intake(127);
+  delay(3000);
+  drive_dist(-2000,-2000);
+  delay(2000);
+
+  // Red addendum
+
+  drive_dist(-4700, -4700);
+  delay(5000);
+  drive_dist(650, -650);
+  delay(1000);
+  drive_dist(3500, 3500);
+  /*/
+
+  // Blue addendum
+  /*
+  drive_dist(-4950, -4950);
+  delay(5000);
+  drive_dist(-650, 650);
+  delay(1000);
+  drive_dist(3000, 3000);
+
+  drive_dist(650,-650);
+  delay(2000);
+  catapult_dist(3000);
+  delay(2000);
+  //
+
+  if(ra) {
+    auton_reverse();
+  }*/
 }
 
 void initialize() {
@@ -90,11 +257,16 @@ void competition_initialize() {
 
 void opcontrol() {
   bool driveReverseButton = false;
-  int armTicks = 0;
   while(true) {
     drive(canalog(ANALOG_LEFT_Y), canalog(ANALOG_RIGHT_Y));
     descorer(-buttons(DIGITAL_X, DIGITAL_B) * 127);
-    intake(-buttons(DIGITAL_R1, DIGITAL_R2) * 127);
+    intake(-buttons(DIGITAL_R1, DIGITAL_R2) * -127);
     catapult(cdigital(DIGITAL_L1) * 127);
+    /*if(!CATAPULT_LIMIT.get_value()){
+      catapult(127);
+    }
+    else if(CATAPULT_LIMIT.get_value()){
+      catapult(0);
+    }*/
   }
 }
