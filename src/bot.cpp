@@ -63,7 +63,7 @@ void intake(std::int8_t speed) {
 }
 
 void catapult(std::int8_t speed) {
-  PUNCHER = -speed;
+  PUNCHER = speed;
 }
 
 void catapult_dist(double delta) {
