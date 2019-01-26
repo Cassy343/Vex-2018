@@ -77,47 +77,45 @@ void auton3(bool blue) {
   catapult(0);
 
   drive_dist(2600, 2600);
-  intake(127);
+  intake(-127);
   delay(2000);
 
   if(blue) {
-    drive_dist(-2600, -2600);
+    drive_dist(-2400, -2400);
     delay(2000);
-    intake(0);
-    drive_dist(700, -700);
-    delay(1000);
+    drive_dist(650, -650);
+    delay(1500);
     catapult(127);
     delay(500);
+    drive_dist(2000,2200);
+    delay(800);
     catapult(0);
-    drive_dist(3200,3200);
-    delay(2500);
+    delay(700);
+    drive_dist(1200,1400);
+    delay(1000);
     drive_dist(-4900,-4900);
     delay(3500);
     drive_dist(-650, 650);
     delay(800);
-    drive_dist(3400, 3400);
-  }else{
-    drive_dist(-2300, -2300);
-    delay(2000);
     intake(0);
-    drive_dist(-600, 600);
+    drive_dist(2500, 2500);
+  }else{
+    drive_dist(-2600, -2600);
+    delay(2000);
+    drive_dist(-650, 650);
     delay(1500);
     catapult(127);
     delay(500);
+    drive_dist(3200,3200);
+    delay(800);
     catapult(0);
-    drive_dist(450,750);
-    delay(600);
-    drive_dist(500,500);
-    delay(500);
-    drive_dist(750,450);
-    delay(600);
-    drive_dist(1500,1500);
-    delay(1000);
+    delay(1700);
     drive_dist(-4900,-4900);
     delay(3500);
     drive_dist(650, -650);
     delay(800);
-    drive_dist(3400, 3400);
+    intake(0);
+    drive_dist(3000, 3000);
   }
 }
 
@@ -166,6 +164,46 @@ void auton5(bool blue)
   drive_dist(3400, 3400);
 }
 
+void auton6(bool blue) {
+  while(!get_arm_lim_switch()) {
+    catapult(127);
+  }
+  delay(250);
+  catapult(0);
+
+  drive_dist(2600, 2600);
+  intake(-127);
+  delay(2000);
+
+  if(blue) {
+    drive_dist(-2400, -2400);
+    delay(2000);
+    drive_dist(700, -700);
+    delay(1500);
+    catapult(127);
+    delay(500);
+    drive_dist(3200,3200);
+    delay(800);
+    catapult(0);
+    delay(1700);
+    drive_dist(-3200,-3200);
+
+  }else{
+    drive_dist(-2600, -2600);
+    delay(2000);
+    drive_dist(-650, 650);
+    delay(1500);
+    catapult(127);
+    delay(500);
+    drive_dist(3200,3200);
+    delay(800);
+    catapult(0);
+    delay(1700);
+    drive_dist(-3200,-3200);
+
+  }
+}
+
 
 void auton_skills(){
   auton3(false);
@@ -174,12 +212,19 @@ void auton_skills(){
 
 void autonomous() {
   bool blue = true;
-
+/*
+  Auton 1 is outdated.
+  Auton 2 is outdated.
+  Auton 3 is the double shot and platform climb
+  Auton 4 is the snipe auton
+  Auton 5 is the park from the back auton
+  Auton 6 is double shot with zero-single-double shot follow-up
+*/
   //auton1(false);
-  //auton3(blue);
+  auton3(blue);
   //auton4(blue);
   //auton_skills();
-  auton5(false);
+  //auton5(false);
   /*if(get_auton() == 1) {
     return;
   }
