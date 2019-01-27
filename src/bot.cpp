@@ -3,7 +3,8 @@
 
 Controller CONTROLLER = Controller(E_CONTROLLER_MASTER);
 Motor PUNCHER(4);
-Motor INTAKE(8);
+Motor INTAKE_1(8);
+Motor INTAKE_2(6);
 Motor DESCORER(7);
 Motor LEFT_BASE_1(3);
 Motor LEFT_BASE_2(10);
@@ -59,7 +60,8 @@ void descorer(std::int8_t speed) {
 }
 
 void intake(std::int8_t speed) {
-  INTAKE = speed;
+  INTAKE_1 = speed;
+  INTAKE_2 = speed;
 }
 
 void catapult(std::int8_t speed) {

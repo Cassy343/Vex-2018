@@ -81,18 +81,20 @@ void auton3(bool blue) {
   delay(2000);
 
   if(blue) {
-    drive_dist(-2400, -2400);
+    drive_dist(-2200, -2200);
     delay(2000);
-    drive_dist(650, -650);
+    drive_dist(675, -675);
     delay(1500);
     catapult(127);
     delay(500);
-    drive_dist(2000,2200);
-    delay(800);
+    drive_dist(200,0);
+    delay(200);
+    drive_dist(2000,2000);
+    delay(600);
     catapult(0);
-    delay(700);
-    drive_dist(1200,1400);
     delay(1000);
+    drive_dist(1200,1400);
+    delay(700);
     drive_dist(-4900,-4900);
     delay(3500);
     drive_dist(-650, 650);
